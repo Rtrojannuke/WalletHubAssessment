@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeSuite;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase{
-	
+	 public static final String testsiteurl = null;
 	public static WebDriver driver;
 	public static Properties config = new Properties();
 	public static FileInputStream fis;
@@ -26,6 +26,7 @@ public class TestBase{
 	String projectlocation = System.getProperty("user.dir");
 	@BeforeMethod
 	@BeforeSuite
+	@parameters({testsiteurl})
 	public void setUp () {
 		
 		if (driver==null) {
@@ -62,17 +63,11 @@ public class TestBase{
 	if(System.getenv("browser")!=null && System.getenv("browser").isEmpty()) {
 				
 				browser = System.getenv("browser");
-				
 			}else {
-				
 				browser = config.getProperty("browser");
-				
 			}
-			
 			config.setProperty("browser", browser);
-				
-			
-			
+		
 			if(config.getProperty("browser").equals("firefox")) {
 				
 				WebDriverManager.firefoxdriver().setup();
@@ -83,7 +78,7 @@ public class TestBase{
 				driver = new ChromeDriver();
 			}
 		
-			driver.get(config.getProperty("testSite2"));
+			driver.get(testsiteurl);
 			driver.manage().window().maximize();		
 		}
 	}
