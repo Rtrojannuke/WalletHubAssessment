@@ -1,7 +1,7 @@
 # WalletHubAssessment
 Clone project from repository by running the command below:
 
-			git clone ""
+			git clone "https://github.com/Rtrojannuke/WalletHubAssessment.git"
 			
 Import into their preferred IDE
 
